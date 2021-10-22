@@ -2,3 +2,23 @@
   background-color: aquamarine;
   margin:auto;
 }
+.phonebook{
+  max-width: 300px;
+  margin:auto;
+  border:1px solid grey;
+}
+.phonebook h1{
+  text-align: center;
+}
+
+.contact-card{
+  padding-left:30px;
+  padding-right:30px;
+  margin:15px;
+  display:flex;
+  align-items: center;
+}
+.contact-card p{
+  padding-left: 10px;
+  flex:1;
+}
