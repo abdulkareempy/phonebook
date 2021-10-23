@@ -1,5 +1,13 @@
-export const increment = ()=>{
+export const addContact = (payload) => {
     return {
-        type:"INCREMENT"
-    }
-}
+        type: "ADD_CONTACT",
+        payload: payload,
+    };
+};
+
+export const toggleFav = (payload) => {
+    return {
+        type: "TOGGLE_FAV",
+        payload: payload,
+    };
+};

@@ -4,6 +4,8 @@ import Avatar from "@mui/material/Avatar";
 import Rating from "@mui/material/Rating";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { useDispatch } from "react-redux";
+import { toggleFav } from "../actions";
 
 // to generate Dynamic background color of avatar
 function stringToColor(string) {
@@ -44,8 +46,8 @@ const StyledRating = styled(Rating)({
     },
 });
 
-function ContactCard({ firstName, lastName }) {
-    const [favValue, setFavValue] = React.useState(0);
+function ContactCard({id, firstName, lastName, isFav }) {
+    const dispatch = useDispatch();
     return (
         <div className="contact-card">
             <Avatar {...stringAvatar(firstName + " " + lastName)} />
@@ -53,11 +55,11 @@ function ContactCard({ firstName, lastName }) {
             <StyledRating
                 name="customized-color"
                 onChange={(event, newValue) => {
-                    setFavValue(newValue);
-                    console.log(favValue)
-                  }}
+                    dispatch(toggleFav({isFav:newValue===1?true:false,id:id}))
+                }}
+                size="large"
                 max={1}
-                defaultValue={0}
+                value={isFav ? 1 : 0}
                 icon={<FavoriteIcon fontSize="inherit" />}
                 emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
             />

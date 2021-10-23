@@ -1,19 +1,28 @@
-import React from 'react'
-import ContactCard from './ContactCard'
+import React from "react";
+import { useSelector } from "react-redux";
+import ContactCard from "./ContactCard";
 
 function PhoneBook() {
+    const contact = useSelector((state) => state.contact);
+    console.table(contact);
     return (
         <div className="phonebook">
-            <h1 >PhoneBook</h1>
+            <h1>PhoneBook</h1>
             <div>
-                <ContactCard firstName="Mohd" lastName="Umair"/>
-                <ContactCard firstName="Aditya" lastName="Rockzs"/>
-                <ContactCard firstName="ShinShan" lastName="Dcruzz"/>
-                <ContactCard firstName="Abdul" lastName="Kareem"/>
-                <ContactCard firstName="Nishant" lastName="Chahar"/>
+                {contact.map((ele, index) => {
+                    return (
+                        <ContactCard
+                            key={index}
+                            id={ele.id}
+                            firstName={ele.firstName}
+                            lastName={ele.lastName}
+                            isFav = {ele.isFav}
+                        />
+                    );
+                })}
             </div>
         </div>
-    )
+    );
 }
 
-export default PhoneBook
+export default PhoneBook;
